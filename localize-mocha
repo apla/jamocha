@@ -4,6 +4,9 @@ copy_files () {
 	mkdir -p lib/mocha/lib/reporters
 	cp mocha/lib/reporters/* lib/mocha/lib/reporters/
 	
+	cp mocha/LICENSE lib/mocha/
+	cp mocha/package.json lib/mocha/
+
 	cp mocha/lib/utils.js lib/mocha/lib/
 	cp mocha/lib/errors.js lib/mocha/lib/
 
