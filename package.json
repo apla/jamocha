@@ -1,0 +1,31 @@
+{
+  "name": "jamocha",
+  "version": "1.0.0",
+  "description": "Write tests for mocha, then run in jasmine",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine --config=test/.jasmine.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apla/jamocha.git"
+  },
+  "keywords": [
+    "jasmine",
+    "mocha"
+  ],
+  "author": "Ivan Baktsheev <dot.and.thing@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apla/jamocha/issues"
+  },
+  "homepage": "https://github.com/apla/jamocha#readme",
+  "devDependencies": {
+    "jasmine": "^3.4.0"
+  },
+  "dependencies": {
+    "diff": "4.0.1",
+    "he": "1.2.0",
+    "supports-color": "6.1.0"
+  }
+}

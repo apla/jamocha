@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+copy_files () {
+	mkdir -p lib/mocha/lib/reporters
+	cp mocha/lib/reporters/* lib/mocha/lib/reporters/
+	
+	cp mocha/lib/utils.js lib/mocha/lib/
+	cp mocha/lib/errors.js lib/mocha/lib/
+
+	cp patch/runner.js lib/mocha/lib/
+}
+
+patch_files () {
+	patch -p0 <patch/utils.patch
+	patch -p0 <patch/reporter-base.patch
+}
+
+copy_files
+
+patch_files
