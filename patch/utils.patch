@@ -1,5 +1,5 @@
 --- mocha/lib/utils.js	1985-10-26 11:15:00.000000000 +0300
-+++ lib/mocha/lib/utils.js	2019-04-10 19:19:20.000000000 +0300
++++ lib/mocha/lib/utils.js	2019-04-11 12:50:20.000000000 +0300
 @@ -18,7 +18,11 @@
  var createNoFilesMatchPatternError = errors.createNoFilesMatchPatternError;
  var createMissingArgumentError = errors.createMissingArgumentError;
@@ -13,3 +13,35 @@
  
  /**
   * Inherit the prototype methods from one constructor into another.
+@@ -711,6 +715,12 @@
+     slash = '/';
+   }
+ 
++  function isJasmineInternal(line) {
++    return (
++      ~line.indexOf('<Jasmine>')
++    );
++  }
++
+   function isMochaInternal(line) {
+     return (
+       ~line.indexOf('node_modules' + slash + 'mocha' + slash) ||
+@@ -722,6 +732,7 @@
+     return (
+       ~line.indexOf('(timers.js:') ||
+       ~line.indexOf('(events.js:') ||
++      ~line.indexOf('(domain.js:') ||
+       ~line.indexOf('(node.js:') ||
+       ~line.indexOf('(module.js:') ||
+       ~line.indexOf('GeneratorFunctionPrototype.next (native)') ||
+@@ -737,6 +748,10 @@
+         return list;
+       }
+ 
++      if (isJasmineInternal(line)) {
++        return list;
++      }
++
+       if (is.node && isNodeInternal(line)) {
+         return list;
+       }
