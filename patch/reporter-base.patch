@@ -1,4 +1,4 @@
---- mocha/lib/reporters/base.js	1985-10-26 11:15:00.000000000 +0300
+--- lib/mocha/lib/reporters/base.js	1985-10-26 11:15:00.000000000 +0300
 +++ lib/mocha/lib/reporters/base.js	2019-04-10 19:23:57.000000000 +0300
 @@ -8,7 +8,7 @@
  

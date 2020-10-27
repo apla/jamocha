@@ -1,18 +1,5 @@
---- mocha/lib/utils.js	1985-10-26 11:15:00.000000000 +0300
+--- lib/mocha/lib/utils.js	1985-10-26 11:15:00.000000000 +0300
 +++ lib/mocha/lib/utils.js	2019-04-11 12:50:20.000000000 +0300
-@@ -18,7 +18,11 @@
- var createNoFilesMatchPatternError = errors.createNoFilesMatchPatternError;
- var createMissingArgumentError = errors.createMissingArgumentError;
- 
--var assign = (exports.assign = require('object.assign').getPolyfill());
-+var assign = (
-+  exports.assign = Object.assign
-+    ? Object.assign
-+    : require('object.assign').getPolyfill()
-+);
- 
- /**
-  * Inherit the prototype methods from one constructor into another.
 @@ -711,6 +715,12 @@
      slash = '/';
    }
