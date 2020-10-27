@@ -1,6 +1,6 @@
 {
   "name": "jamocha",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Write tests for mocha, then run in jasmine",
   "main": "index.js",
   "scripts": {
@@ -21,11 +21,12 @@
   },
   "homepage": "https://github.com/apla/jamocha#readme",
   "devDependencies": {
-    "jasmine": "^3.4.0"
+    "jasmine": "^3.6.2"
   },
   "dependencies": {
     "diff": "4.0.1",
     "he": "1.2.0",
+    "nanoid": "^3.1.16",
     "supports-color": "6.1.0"
   }
 }

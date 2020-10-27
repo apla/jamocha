@@ -49,6 +49,17 @@ function convertSpec (specResult, suitePath) {
 
 var mochaStackFilter = utils.stackTraceFilter();
 
+function diffFilter (spec) {
+	if (spec.actual === '' && spec.expected === '') {
+		var newSpec = Object.assign({}, spec);
+		delete newSpec.actual;
+		delete newSpec.expected;
+		return newSpec;
+	}
+
+	return spec;
+}
+
 class JasmineRunner extends EventEmitter {
 
 	constructor () {
@@ -60,9 +71,9 @@ class JasmineRunner extends EventEmitter {
 		this._total = 0;
 
 		this.stats = {
-			passes: 0,
+			passes:   0,
 			duration: 0,
-			pending: undefined,
+			pending:  undefined,
 			failures: undefined
 		}
 
@@ -113,9 +124,11 @@ class JasmineRunner extends EventEmitter {
 			this.stats.failures = (this.stats.failures || 0) + specResult.failedExpectations.length;
 
 			var failures = specResult.failedExpectations.map (function (failedSpec) {
+				failedSpec = diffFilter (failedSpec);
+
 				return failedSpec.stack ? Object.assign ({}, failedSpec, {
 					stack: mochaStackFilter (failedSpec.stack)
-				}) : failedSpec.stack;
+				}) : failedSpec;
 			});
 
 			this.emit (constants.EVENT_TEST_FAIL, test, failures[0]);

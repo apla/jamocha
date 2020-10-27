@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 copy_files () {
 	mkdir -p lib/mocha/lib/reporters

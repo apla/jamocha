@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 package="$1"
 dir=""
@@ -6,7 +6,8 @@ if [ "x$2" != "x" ] ; then
 	dir="$2/"
 fi
 
-version=$(npm show ${package} version)
+# version=$(npm show ${package} version)
+version="8.2.0"
 archive="${package}-${version}.tgz"
 curl --silent --remote-name \
   "https://registry.npmjs.org/${package}/-/${archive}"
