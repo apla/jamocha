@@ -4,7 +4,7 @@ var utils = require ('./lib/mocha/lib/utils');
 var constants = require ('./lib/mocha/lib/runner').constants;
 
 var defaultNow = (function(Date) {
-    return function() { return new Date().getTime(); };
+	return function() { return new Date().getTime(); };
 })(Date);
 
 function Timer(options) {
@@ -39,7 +39,7 @@ function convertSuite (suiteResult) {
 function convertSpec (specResult, suitePath) {
 	return {
 		title: specResult.description,
-		fullTitle() {return specResult.fullTitle},
+		fullTitle() {return specResult.fullName},
 		slow() {return 75},
 		duration: specResult.duration,
 		_titlePath: suitePath.slice(0),
@@ -73,8 +73,8 @@ class JasmineRunner extends EventEmitter {
 		this.stats = {
 			passes:   0,
 			duration: 0,
-			pending:  undefined,
-			failures: undefined
+			pending:  0,
+			failures: 0
 		}
 
 		this.suitePath = [];
@@ -102,9 +102,9 @@ class JasmineRunner extends EventEmitter {
 		this.suitePath.push (result.description);
 	}
 
-	specStarted (result) {
+	specStarted (specResult) {
 
-		this.emit (constants.EVENT_TEST_BEGIN);
+		this.emit (constants.EVENT_TEST_BEGIN, convertSpec (specResult, this.suitePath));
 
 		// TODO: remove
 		this.timer.start();

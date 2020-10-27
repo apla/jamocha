@@ -1,7 +1,7 @@
 {
   "name": "jamocha",
-  "version": "1.0.1",
-  "description": "Write tests for mocha, then run in jasmine",
+  "version": "1.0.2",
+  "description": "Mocha reporters for Jasmine",
   "main": "index.js",
   "scripts": {
     "test": "jasmine --config=test/.jasmine.json"
